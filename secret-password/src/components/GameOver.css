@@ -1,4 +1,54 @@
-h2 span{
-    color: #ecfa00;
-    font-size: 1.5rem;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap'); 
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #252839;
+    min-height: 100vh;
+}
+
+.over h1{
+    position: relative;
+    font-size:  8vw;
+    color:  #252839;
+    -webkit-text-stroke: 0.3vw #383d52;
+}
+
+.over h1::before
+{
+    
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    color: #01fe87;
+    -webkit-text-stroke: 0vw #383d52;
+    border-right: 2px solid #01fe87;
+    overflow: hidden;
+    animation: animate 6s linear infinite;
+}
+.over p{
+    position: relative;
+    white-space : nowrap;
+    font-size:  8vw;
+    color:  #252839;
+    -webkit-text-stroke: 0.3vw #383d52;
+}
+
+
+
+
+@keyframes animate 
+{
+    0%,10%,100%
+    {
+        width: 0;
+    }
+    70%,90%
+    {
+        width: 100%;
+    }
+
 }
