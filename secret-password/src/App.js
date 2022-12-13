@@ -78,6 +78,28 @@ const App = () => {
     // --  verifyLetter of the Secret Password Game -- //
   const verifyLetter=(letter)=>{
     console.log(letter);
+
+    // Check if Letter has already been utilized
+    const normalizezLetter = letter.toLowerCase();
+
+    if(guessedLetters.includes(normalizezLetter) || wrongLetters.includes(normalizezLetter))
+    {
+      return ;
+    } 
+
+    // Remove a guess push a guesses letter
+
+    if(letters.includes(normalizezLetter)){
+      setGuessedLetters((actualGueesedLetter)=>[
+        ...actualGueesedLetter, normalizezLetter
+      ])
+    }else{
+      setWrongLetters((actualGueesedLetter)=>[
+        ...actualGueesedLetter, normalizezLetter
+      ])
+    }
+    console.log(guessedLetters)
+    console.log(wrongLetters)
   }
 
   const reStartGame=()=>{
