@@ -19,6 +19,8 @@ const stages = [
   { id: 3, name: "end" },
 ];
 
+const guessQty=3;
+
 const App = () => {
   // Selecionar os stages
   const [gameStage, setGameStage] = useState(stages[0].name); // inicializa o gamestage como start
@@ -34,7 +36,7 @@ const App = () => {
   // Guessed Letters
   const[guessedLetters, setGuessedLetters]=useState([])
   const[wrongLetters, setWrongLetters]=useState([])
-  const[guesses, setGuesses]=useState(3)
+  const[guesses, setGuesses]=useState(guessQty)
   const[score, setScore]=useState(0)
 
 
@@ -63,7 +65,7 @@ const App = () => {
     // wordLetters = wordLetters.map((l)=> l.toLowerCase())
 
     console.log(wordLetters)
-    console.log(word, category)
+    console.log( category,word)
 
     // Fill States
     ssetPickedWord(word);
@@ -96,13 +98,32 @@ const App = () => {
     }else{
       setWrongLetters((actualGueesedLetter)=>[
         ...actualGueesedLetter, normalizezLetter
-      ])
+      ]);
+      setGuesses((actualGuesses)=> actualGuesses-1);
     }
-    console.log(guessedLetters)
-    console.log(wrongLetters)
+
   }
 
+  const clearLetterStages = () => {
+    setGuessedLetters([]);
+    setWrongLetters([]);
+  }
+
+
+  // If the number of guesses == 0 o should game over
+  useEffect (()=>{
+    if(guesses <= 0){
+
+      // Reset all stages
+      clearLetterStages();  // Clear 
+
+      setGameStage(stages[2].name); // put to gameOver page
+    }
+  }, [guesses]);
+
   const reStartGame=()=>{
+    setScore(0);
+    setGuesses(guessQty);
     setGameStage(stages[0].name)
   }
 
@@ -120,7 +141,11 @@ const App = () => {
         guesses={guesses}
         score={score}
       />}                   {/* se o estagio do jogo for game renderizar no ecran o Game */}
-      {gameStage == "end" && <GameOver reStartGame={reStartGame} />}                {/* se o estagio do jogo for end renderizar no ecran o GameOver */}
+      {gameStage == "end" && 
+      <GameOver 
+        reStartGame={reStartGame} 
+        score={score}
+        />}                {/* se o estagio do jogo for end renderizar no ecran o GameOver */}
     </div>
   );
 };
