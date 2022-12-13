@@ -1,27 +1,56 @@
-.start{
-    margin-top: 5rem;
-}
-.start h1{
-    font-size:  4.5rem;
-}
-.start h1 span {
-    border: 2px solid greenyellow;
-    padding: 10px;
-    margin: 2px;
-    background-color: rgb(115, 172, 28);
-    border-radius: 10px;
-    transition: 1s ease-in-out;
-    cursor: pointer;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap'); 
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #252839;
+    min-height: 100vh;
 }
 
-.start h1 span:hover{
-    transform: rotate(180deg);
-    background-color: #00facc;
+.start h1{
+    position: relative;
+    font-size:  8vw;
+    color:  #252839;
+    -webkit-text-stroke: 0.3vw #383d52;
 }
+
+.start h1::before
+{
+    
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    color: #01fe87;
+    -webkit-text-stroke: 0vw #383d52;
+    border-right: 2px solid #01fe87;
+    overflow: hidden;
+    animation: animate 6s linear infinite;
+}
+
+
 
 .start p{
+    position: relative;
     margin-bottom: 2rem;
-    color: #00facc;
+    color:  #252839;
+    -webkit-text-stroke: 0.3vw #383d52;
     font-weight: bold;
     font-size: 3rem;
+}
+
+
+@keyframes animate 
+{
+    0%,10%,100%
+    {
+        width: 0;
+    }
+    70%,90%
+    {
+        width: 100%;
+    }
+
 }
