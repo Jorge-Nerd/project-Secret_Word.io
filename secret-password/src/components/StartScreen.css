@@ -1,7 +1,27 @@
-.start h1{
-    font: size 3.5rem;
+.start{
+    margin-top: 5rem;
 }
+.start h1{
+    font-size:  4.5rem;
+}
+.start h1 span {
+    border: 2px solid greenyellow;
+    padding: 10px;
+    margin: 2px;
+    background-color: rgb(115, 172, 28);
+    border-radius: 10px;
+    transition: 1s ease-in-out;
+    cursor: pointer;
+}
+
+.start h1 span:hover{
+    transform: rotate(180deg);
+    background-color: #00facc;
+}
+
 .start p{
     margin-bottom: 2rem;
-    color: #ecfa00;
+    color: #00facc;
+    font-weight: bold;
+    font-size: 3rem;
 }

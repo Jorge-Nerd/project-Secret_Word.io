@@ -11,4 +11,4 @@ const StartScreen = ({startGame}) => {
   )
 }
 
-export default StartScreen
+export default StartScreen;

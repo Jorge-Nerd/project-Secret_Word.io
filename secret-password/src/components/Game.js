@@ -38,6 +38,7 @@ const Game = ({verifyLetter,pickedWord, pickedCategory, letters, guessedLetters,
         
       </div>
 
+          
       <div className="letterContainer">
         <p> Try to guess a letter of the word</p>
         <form onSubmit={handleSubmit}>
