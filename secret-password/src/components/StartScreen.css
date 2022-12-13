@@ -1,10 +1,12 @@
 .start{
-    margin-top: 10rem;
+    margin-top: 5rem;
 }
 .start h1{
-    font: size 3.5rem;
+    font-size:  6.5rem;
 }
 .start p{
     margin-bottom: 2rem;
-    color: #ecfa00;
+    color: #00facc;
+    font-weight: bold;
+    font-size: 3rem;
 }

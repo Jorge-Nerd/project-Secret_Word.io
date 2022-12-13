@@ -143,7 +143,7 @@ const App = () => {
       startGame();
     }
 
-  },[guessedLetters, letters, startGame]);
+  },[guessedLetters, letters, startGame, gameStage]);
 
 
   // Restart the Game
