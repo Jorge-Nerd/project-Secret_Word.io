@@ -31,10 +31,11 @@ body{
 }
 .over p{
     position: relative;
-    white-space : nowrap;
-    font-size:  8vw;
+    margin-bottom: 2rem;
     color:  #252839;
     -webkit-text-stroke: 0.3vw #383d52;
+    font-weight: bold;
+    font-size: 3rem;
 }
 
 
