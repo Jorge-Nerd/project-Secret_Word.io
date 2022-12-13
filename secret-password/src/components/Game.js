@@ -55,7 +55,7 @@ const Game = ({verifyLetter,pickedWord, pickedCategory, letters, guessedLetters,
       <div className="wrongLettersContainer">
         <p> Used Letters</p>
         {wrongLetters.map((l, i)=>(
-          <span key={i}> {l}, {i} </span>
+          <span key={i}> {l} </span>
         ))}
       
       </div>
