@@ -14,6 +14,8 @@ const Game = ({verifyLetter,pickedWord, pickedCategory, letters, guessedLetters,
     setLetter("");
 
     letterInput.current.focus();
+    
+    
   }
   
   return (
