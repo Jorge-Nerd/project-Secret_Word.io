@@ -40,7 +40,7 @@ const App = () => {
   const[score, setScore]=useState(0)
 
 
-  const pickedWordAndCategory = () => {
+  const pickedWordAndCategory = useCallback(() => {
     const categories = Object.keys(words)
     const category = categories[Math.floor(Math.random()*Object.keys(categories).length)];
     
@@ -52,11 +52,17 @@ const App = () => {
     console.log(word);
 
     return{word, category} // desestruturando
-  }
+  },[words]);
 
 
   // -- Start the Secret Password Game -- //
-  const startGame=()=>{
+  const startGame=useCallback(()=>{
+
+    // Clear guesses
+    setGuesses(guessQty)
+    // Clear all Letters
+    clearLetterStages();
+
     // Picked Word and Category
     const {word, category} = pickedWordAndCategory();
 
@@ -75,7 +81,7 @@ const App = () => {
 
 
     setGameStage(stages[1].name)
-  } 
+  },[pickedWordAndCategory] );
 
     // --  verifyLetter of the Secret Password Game -- //
   const verifyLetter=(letter)=>{
@@ -121,6 +127,26 @@ const App = () => {
     }
   }, [guesses]);
 
+  // Check WIN Condition
+  useEffect(()=>{
+    const uniqueLetter = [...new Set(letters)];
+    console.log(uniqueLetter)
+
+    // Win Condition
+
+    if(guessedLetters.length === uniqueLetter.length && gameStage === stages[1].name){
+
+      // Add Score
+      setScore((actualScore)=>(actualScore += 100));
+       
+      // ResStart Game
+      startGame();
+    }
+
+  },[guessedLetters, letters, startGame]);
+
+
+  // Restart the Game
   const reStartGame=()=>{
     setScore(0);
     setGuesses(guessQty);
@@ -129,8 +155,8 @@ const App = () => {
 
   return (
     <div className="App">
-      {gameStage == "start" && <StartScreen startGame={startGame}/>}          {/* se o estagio do jogo for start renderizar no ecran o StartScreen */}
-      {gameStage == "game" && 
+      {gameStage === "start" && <StartScreen startGame={startGame}/>}          {/* se o estagio do jogo for start renderizar no ecran o StartScreen */}
+      {gameStage === "game" && 
       <Game 
         verifyLetter={verifyLetter}
         pickedWord={pickedWord}
@@ -141,7 +167,7 @@ const App = () => {
         guesses={guesses}
         score={score}
       />}                   {/* se o estagio do jogo for game renderizar no ecran o Game */}
-      {gameStage == "end" && 
+      {gameStage === "end" && 
       <GameOver 
         reStartGame={reStartGame} 
         score={score}
