@@ -5,4 +5,4 @@
 🎈The technologies that were used were:
  🎁React js using Hooks: UseStates, UseRef, UseEffect
 
-🎇To initialize the page we used css animation
+🎇To stylle the page we used css animation
